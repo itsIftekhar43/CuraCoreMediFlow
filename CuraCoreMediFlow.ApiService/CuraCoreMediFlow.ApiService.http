@@ -1,0 +1,6 @@
+@CuraCoreMediFlow.ApiService_HostAddress = http://localhost:5225
+
+GET {{CuraCoreMediFlow.ApiService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
