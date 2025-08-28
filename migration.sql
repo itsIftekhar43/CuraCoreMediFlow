@@ -1,0 +1,66 @@
+﻿CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+
+START TRANSACTION;
+CREATE TABLE "HospitalAccounts" (
+    "Id" uuid NOT NULL,
+    "HospitalName" character varying(250) NOT NULL,
+    "Identifier" text NOT NULL,
+    "DatabaseName" text,
+    "DatabaseConnectionString" text,
+    "IsActive" boolean NOT NULL,
+    "CreatedAt" timestamp with time zone NOT NULL,
+    CONSTRAINT "PK_HospitalAccounts" PRIMARY KEY ("Id")
+);
+
+CREATE TABLE "Roles" (
+    "Id" uuid NOT NULL,
+    "Name" character varying(100) NOT NULL,
+    "Description" text,
+    CONSTRAINT "PK_Roles" PRIMARY KEY ("Id")
+);
+
+CREATE TABLE "Users" (
+    "Id" uuid NOT NULL,
+    "Username" character varying(100) NOT NULL,
+    "Email" text NOT NULL,
+    "PasswordHash" text NOT NULL,
+    "IsActive" boolean NOT NULL,
+    "CreatedAt" timestamp with time zone NOT NULL,
+    CONSTRAINT "PK_Users" PRIMARY KEY ("Id")
+);
+
+CREATE TABLE "UserRoleHospitalMaps" (
+    "Id" uuid NOT NULL,
+    "UserId" uuid NOT NULL,
+    "RoleId" uuid NOT NULL,
+    "HospitalAccountId" uuid NOT NULL,
+    "AssignedAt" timestamp with time zone NOT NULL,
+    CONSTRAINT "PK_UserRoleHospitalMaps" PRIMARY KEY ("Id"),
+    CONSTRAINT "FK_UserRoleHospitalMaps_HospitalAccounts_HospitalAccountId" FOREIGN KEY ("HospitalAccountId") REFERENCES "HospitalAccounts" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_UserRoleHospitalMaps_Roles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "Roles" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_UserRoleHospitalMaps_Users_UserId" FOREIGN KEY ("UserId") REFERENCES "Users" ("Id") ON DELETE CASCADE
+);
+
+CREATE UNIQUE INDEX "IX_HospitalAccounts_Identifier" ON "HospitalAccounts" ("Identifier");
+
+CREATE UNIQUE INDEX "IX_Roles_Name" ON "Roles" ("Name");
+
+CREATE INDEX "IX_UserRoleHospitalMaps_HospitalAccountId" ON "UserRoleHospitalMaps" ("HospitalAccountId");
+
+CREATE INDEX "IX_UserRoleHospitalMaps_RoleId" ON "UserRoleHospitalMaps" ("RoleId");
+
+CREATE UNIQUE INDEX "IX_UserRoleHospitalMaps_UserId_RoleId_HospitalAccountId" ON "UserRoleHospitalMaps" ("UserId", "RoleId", "HospitalAccountId");
+
+CREATE UNIQUE INDEX "IX_Users_Email" ON "Users" ("Email");
+
+CREATE UNIQUE INDEX "IX_Users_Username" ON "Users" ("Username");
+
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250828145410_InitialCreate', '9.0.8');
+
+COMMIT;
+
