@@ -12,9 +12,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CuraCoreMediFlow.Application\CuraCoreMediFlow.Application.csproj" />
-    <ProjectReference Include="..\CuraCoreMediFlow.Domain\CuraCoreMediFlow.CDB.Domain.csproj" />
-    <ProjectReference Include="..\CuraCoreMediFlow.Hospital.Infrastructure\CuraCoreMediFlow.DB.Infrastructure.csproj" />
-    <ProjectReference Include="..\CuraCoreMediFlow.Infrastructure\CuraCoreMediFlow.CDB.Infrastructure.csproj" />
+    <ProjectReference Include="..\CuraCoreMediFlow.CDB.Domain\CuraCoreMediFlow.CDB.Domain.csproj" />
+    <ProjectReference Include="..\CuraCoreMediFlow.CDB.Infrastructure\CuraCoreMediFlow.CDB.Infrastructure.csproj" />
+    <ProjectReference Include="..\CuraCoreMediFlow.DB.Domain\CuraCoreMediFlow.DB.Domain.csproj" />
+    <ProjectReference Include="..\CuraCoreMediFlow.DB.Infrastructure\CuraCoreMediFlow.DB.Infrastructure.csproj" />
     <ProjectReference Include="..\CuraCoreMediFlow.Shared\CuraCoreMediFlow.Shared.csproj" />
   </ItemGroup>
 	
