@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CuraCoreMediFlow.CDB.Infrastructure.Migrations
 {
     [DbContext(typeof(CentralDbContext))]
-    [Migration("20250828145410_InitialCreate")]
+    [Migration("20250828161043_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,9 +27,11 @@ namespace CuraCoreMediFlow.CDB.Infrastructure.Migrations
 
             modelBuilder.Entity("CuraCoreMediFlow.Domain.Entities.HospitalAccount", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -62,9 +64,11 @@ namespace CuraCoreMediFlow.CDB.Infrastructure.Migrations
 
             modelBuilder.Entity("CuraCoreMediFlow.Domain.Entities.Role", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -84,9 +88,11 @@ namespace CuraCoreMediFlow.CDB.Infrastructure.Migrations
 
             modelBuilder.Entity("CuraCoreMediFlow.Domain.Entities.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -120,21 +126,23 @@ namespace CuraCoreMediFlow.CDB.Infrastructure.Migrations
 
             modelBuilder.Entity("CuraCoreMediFlow.Domain.Entities.UserRoleHospitalMap", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("AssignedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("HospitalAccountId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("HospitalAccountId")
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

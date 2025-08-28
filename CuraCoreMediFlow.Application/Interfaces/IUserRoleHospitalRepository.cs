@@ -10,6 +10,6 @@ namespace CuraCoreMediFlow.Domain.Interfaces
     public interface IUserRoleHospitalRepository
     {
         Task AddAsync(UserRoleHospitalMap map);
-        Task<IEnumerable<UserRoleHospitalMap>> GetByUserIdAsync(Guid userId);
+        Task<IEnumerable<UserRoleHospitalMap>> GetByUserIdAsync(int userId);
     }
 }

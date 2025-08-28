@@ -8,7 +8,7 @@ namespace CuraCoreMediFlow.Domain.Entities
 {
     public class HospitalAccount
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public int Id { get; set; }
         public string HospitalName { get; set; } = string.Empty;
         public string Identifier { get; set; } = string.Empty; // unique code or subdomain
         public string? DatabaseName { get; set; }                // optional DB name

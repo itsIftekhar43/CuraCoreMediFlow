@@ -16,7 +16,7 @@ namespace CuraCoreMediFlow.CDB.Infrastructure.Repositories
             await _db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<UserRoleHospitalMap>> GetByUserIdAsync(Guid userId) =>
+        public async Task<IEnumerable<UserRoleHospitalMap>> GetByUserIdAsync(int userId) =>
             await _db.UserRoleHospitalMaps.Where(m => m.UserId == userId).AsNoTracking().ToListAsync();
     }
 }

@@ -8,7 +8,7 @@ namespace CuraCoreMediFlow.Domain.Entities
 {
     public class Role
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public int Id { get; set; }
         public string Name { get; set; } = string.Empty; // Admin, Doctor, Nurse, etc.
         public string? Description { get; set; }
     }

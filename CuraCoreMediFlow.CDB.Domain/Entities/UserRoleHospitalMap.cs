@@ -8,15 +8,15 @@ namespace CuraCoreMediFlow.Domain.Entities
 {
     public class UserRoleHospitalMap
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public int Id { get; set; }
 
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public User? User { get; set; }
 
-        public Guid RoleId { get; set; }
+        public int RoleId { get; set; }
         public Role? Role { get; set; }
 
-        public Guid HospitalAccountId { get; set; }
+        public int HospitalAccountId { get; set; }
         public HospitalAccount? HospitalAccount { get; set; }
 
         public DateTime AssignedAt { get; set; } = DateTime.UtcNow;
