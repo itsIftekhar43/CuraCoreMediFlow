@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CuraCoreMediFlow.Domain\CuraCoreMediFlow.Domain.csproj" />
+    <ProjectReference Include="..\CuraCoreMediFlow.Domain\CuraCoreMediFlow.CDB.Domain.csproj" />
     <ProjectReference Include="..\CuraCoreMediFlow.Shared\CuraCoreMediFlow.Shared.csproj" />
   </ItemGroup>
 

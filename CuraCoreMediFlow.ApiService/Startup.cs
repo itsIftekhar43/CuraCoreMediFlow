@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
+using CuraCoreMediFlow.CDB.Infrastructure;
 
 namespace CuraCoreMediFlow.ApiService
 {
@@ -19,6 +15,7 @@ namespace CuraCoreMediFlow.ApiService
         // Register services here
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCentralDb(Configuration);
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
